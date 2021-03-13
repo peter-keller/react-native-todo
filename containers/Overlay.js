@@ -1,19 +1,8 @@
-import React, { useState } from "react";
-import { Alert, Modal, StyleSheet, Text, Pressable, View } from "react-native";
+import React from "react";
+import { Alert, Modal, StyleSheet, View } from "react-native";
 
-const Overlay = ({ isVisible, name, onClose, content, footer }) => {
-  const [modalVisible, setModalVisible] = useState(false);
-  /* <Pressable
-        style={[styles.button, styles.buttonOpen]}
-        onPress={() => setModalVisible(true)}
-      >
-        <Text style={styles.textStyle}>Show Modal</Text>
-      </Pressable>
-    </View> */
-  console.log({ isVisible });
-
+const Overlay = ({ isVisible, content, footer }) => {
   return (
-    // <View style={styles.centeredView}>
     <Modal
       animationType="slide"
       transparent={true}
@@ -27,12 +16,6 @@ const Overlay = ({ isVisible, name, onClose, content, footer }) => {
         <View style={styles.modalView}>
           {content}
           {footer}
-          {/* <Pressable
-            style={[styles.button, styles.buttonClose]}
-            onPress={() => onClose(name)}
-          >
-            <Text style={styles.textStyle}>Hide Modal</Text>
-          </Pressable> */}
         </View>
       </View>
     </Modal>
@@ -60,26 +43,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
-  },
-  button: {
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
-  },
-  buttonOpen: {
-    backgroundColor: "#F194FF",
-  },
-  buttonClose: {
-    backgroundColor: "#2196F3",
-  },
-  textStyle: {
-    color: "white",
-    fontWeight: "bold",
-    textAlign: "center",
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: "center",
   },
 });
 
