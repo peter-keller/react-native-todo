@@ -73,7 +73,11 @@ export default function App() {
   };
 
   const renderItem = ({ item }) => (
-    <TodoTask task={item} onValueChange={changeTaskStatus} />
+    <TodoTask
+      task={item}
+      onDelete={deleteTask}
+      onValueChange={changeTaskStatus}
+    />
   );
 
   return (

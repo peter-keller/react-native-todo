@@ -2,9 +2,11 @@ import React from "react";
 import { Text, StyleSheet, View, Dimensions } from "react-native";
 import CheckBox from "@react-native-community/checkbox";
 
+import Button from "./Button";
+
 const width = Dimensions.get("window").width;
 
-const TodoTask = ({ task, onValueChange }) => {
+const TodoTask = ({ task, onValueChange, onDelete }) => {
   const { title, completed, id } = task;
 
   return (
@@ -15,6 +17,7 @@ const TodoTask = ({ task, onValueChange }) => {
         value={completed}
         onValueChange={() => onValueChange(id)}
       />
+      <Button label="Delete" type="danger" onPress={() => onDelete(id)} />
     </View>
   );
 };
