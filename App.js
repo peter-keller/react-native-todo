@@ -5,10 +5,10 @@ import {
   Text,
   View,
   Button,
-  FlatList,
   Dimensions,
   Pressable,
 } from "react-native";
+import { FlatList } from "react-native-gesture-handler";
 
 import InputField from "./components/InputField";
 import TodoTask from "./components/TodoTask";
@@ -72,9 +72,10 @@ export default function App() {
     setOverlay([]);
   };
 
-  const renderItem = ({ item }) => (
+  const renderItem = (task, index) => (
     <TodoTask
-      task={item}
+      task={task}
+      index={index}
       onDelete={deleteTask}
       onValueChange={changeTaskStatus}
     />
@@ -122,7 +123,7 @@ export default function App() {
       <FlatList
         style={styles.list}
         data={Object.values(tasks)}
-        renderItem={renderItem}
+        renderItem={({ item, index }) => renderItem(item, index)}
         keyExtractor={(task) => task.id}
       />
       <StatusBar style="auto" />
@@ -170,5 +171,34 @@ const styles = StyleSheet.create({
   },
   newTask: {
     paddingTop: 132,
+  },
+  rectButton: {
+    flex: 1,
+    height: 80,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    justifyContent: "space-between",
+    flexDirection: "column",
+    backgroundColor: "white",
+  },
+  separator: {
+    backgroundColor: "rgb(200, 199, 204)",
+    height: StyleSheet.hairlineWidth,
+  },
+  fromText: {
+    fontWeight: "bold",
+    backgroundColor: "transparent",
+  },
+  messageText: {
+    color: "#999",
+    backgroundColor: "transparent",
+  },
+  dateText: {
+    backgroundColor: "transparent",
+    position: "absolute",
+    right: 20,
+    top: 10,
+    color: "#999",
+    fontWeight: "bold",
   },
 });

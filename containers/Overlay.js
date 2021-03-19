@@ -3,15 +3,7 @@ import { Alert, Modal, StyleSheet, View } from "react-native";
 
 const Overlay = ({ isVisible, content, footer }) => {
   return (
-    <Modal
-      animationType="slide"
-      transparent={true}
-      visible={isVisible}
-      onRequestClose={() => {
-        Alert.alert("Modal has been closed.");
-        setModalVisible(!modalVisible);
-      }}
-    >
+    <Modal animationType="slide" transparent={true} visible={isVisible}>
       <View style={styles.centeredView}>
         <View style={styles.modalView}>
           {content}
